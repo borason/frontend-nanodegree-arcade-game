@@ -1,9 +1,10 @@
 // Enemies our player must avoid
-var Enemy = function(x, y) {
+var Enemy = function(x, y, speed) {
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
     this.x = x;
     this.y = y;
+    this.speed = Math.floor((Math.random() * 300) + 75);
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
     this.sprite = new Image();
@@ -14,6 +15,7 @@ var Enemy = function(x, y) {
 // Parameter: dt, a time delta between ticks
 Enemy.prototype.update = function(dt) {
     // You should multiply any movement by the dt parameter
+    this.x += this.speed * dt;
     // which will ensure the game runs at the same speed for
     // all computers.
 };
@@ -56,12 +58,19 @@ Player.prototype.handleInput = function(keyCode){
     }
 };
 // Now instantiate your objects.
-const allEnemies = [];
+let allEnemies = [];
+
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
-let player = new Player(200, 300);
+let player = new Player(200, 320);
 
-allEnemies.push(new Enemy (0, 0));
+let enemy1 = allEnemies.push(new Enemy (0, 60));
+
+let enemy2 = allEnemies.push(new Enemy (0, 145));
+
+let enemy3 = allEnemies.push(new Enemy (0, 230));
+
+allEnemies.push(new Enemy (0, 60));
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
