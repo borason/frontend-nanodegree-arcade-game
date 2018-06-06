@@ -1,10 +1,12 @@
 // Enemies our player must avoid
-var Enemy = function() {
+var Enemy = function(x, y) {
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
-
+    this.x = x;
+    this.y = y;
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
+    this.sprite = new Image();
     this.sprite = 'images/enemy-bug.png';
 };
 
@@ -57,8 +59,9 @@ Player.prototype.handleInput = function(keyCode){
 const allEnemies = [];
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
-let player = new Player(100, 125);
+let player = new Player(200, 300);
 
+allEnemies.push(new Enemy (0, 0));
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
