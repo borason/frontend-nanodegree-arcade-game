@@ -4,10 +4,9 @@ var Enemy = function(x, y, speed) {
     // we've provided one for you to get started
     this.x = x;
     this.y = y;
-    this.speed = Math.floor((Math.random() * 300) + 75);
+    this.speed = Math.floor((Math.random() * 300) + 10);
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
-    this.sprite = new Image();
     this.sprite = 'images/enemy-bug.png';
 };
 
@@ -23,6 +22,7 @@ Enemy.prototype.update = function(dt) {
 // Draw the enemy on the screen, required method for game
 Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+    console.log(this.x);
 };
 
 // Now write your own player class
@@ -35,7 +35,7 @@ const Player = function(x, y){
 // This class requires an update(), render() and
 // a handleInput() method.
 Player.prototype.update = function(){
-    console.log(this.x);
+    // console.log(this.x);
 };
 
 Player.prototype.render = function(){
@@ -70,7 +70,7 @@ let enemy2 = allEnemies.push(new Enemy (0, 145));
 
 let enemy3 = allEnemies.push(new Enemy (0, 230));
 
-allEnemies.push(new Enemy (0, 60));
+// allEnemies.push(new Enemy (0, 60));
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
