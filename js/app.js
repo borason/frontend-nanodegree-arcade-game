@@ -41,18 +41,21 @@ class Player extends Character {
   }
   update() {
     this.collisionDetector();
+    if (this.y < 0) {
+      win();
+    }
   }
     collisionDetector() {
-    allEnemies.forEach(function (enemy){
-    if (player.x < enemy.x + 80 &&
-        player.x + 80 > enemy.x &&
-        player.y < enemy.y + 60 &&
-        60 + player.y > enemy.y) {
-    player.x = 200;
-    player.y = 405;
+      allEnemies.forEach(function (enemy){
+      if (player.x < enemy.x + 80 &&
+          player.x + 80 > enemy.x &&
+          player.y < enemy.y + 60 &&
+          60 + player.y > enemy.y) {
+      player.x = 200;
+      player.y = 405;
+      }
+      });
     }
-  });
-  }
   handleInput(keyCode) {
         switch(keyCode){
         case 'up':
@@ -70,6 +73,9 @@ class Player extends Character {
   }
 }
 
+let win = function() {
+  console.log('win');
+}
 
 // This class requires an update(), render() and
 // a handleInput() method.
