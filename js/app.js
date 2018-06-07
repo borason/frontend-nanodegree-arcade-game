@@ -64,11 +64,23 @@ let allEnemies = [];
 // Place the player object in a variable called player
 let player = new Player(200, 320);
 
-let enemy1 = allEnemies.push(new Enemy (0, 60));
 
-let enemy2 = allEnemies.push(new Enemy (0, 145));
+function spawnEnemies () {
+  const trafficLane = [60, 145, 230];
+  for (let i = 0; i < 3; i ++) {
+    allEnemies.push(new Enemy (0, trafficLane[i]));
+  }
+};
 
-let enemy3 = allEnemies.push(new Enemy (0, 230));
+let newEnemies = function(){setInterval(spawnEnemies(), 1000);};
+
+newEnemies();
+
+// let enemy1 = allEnemies.push(new Enemy (0, 60));
+
+// let enemy2 = allEnemies.push(new Enemy (0, 145));
+
+// let enemy3 = allEnemies.push(new Enemy (0, 230));
 
 // allEnemies.push(new Enemy (0, 60));
 
