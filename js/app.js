@@ -10,23 +10,17 @@ class Enemy extends Character {
     super(x, y);
     this.width = 100;
     this.height = 100;
-    this.speed = Math.floor((Math.random() * 300) + 100);
+    this.speed = Math.floor((Math.random() * 300) + 50);
     this.sprite = 'images/enemy-bug.png';
   }
   update(dt) {
     this.x += this.speed * dt;
     this.reachedEndOfBoard();
-    this.collisionDetector();
   }
   reachedEndOfBoard() {
   if (this.x > ctx.canvas.width) {
     this.x = 0;
-    this.speed = Math.floor((Math.random() * 300) + 100);
-    }
-  }
-  collisionDetector() {
-    if (player.y <= (this.y + 20) && (this.x + 100 > player.x && this.x - 100 < player.x)) {
-    console.log('collision');
+    this.speed = Math.floor((Math.random() * 300) + 50);
     }
   }
   render() {
@@ -38,7 +32,7 @@ class Enemy extends Character {
 class Player extends Character {
   constructor(x, y) {
     super(x, y);
-    this.width = 100;
+    this.width = 80;
     this.height = 100;
     this.sprite = "images/char-boy.png";
   }
@@ -46,7 +40,18 @@ class Player extends Character {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
   }
   update() {
-
+    this.collisionDetector();
+  }
+    collisionDetector() {
+    allEnemies.forEach(function (enemy){
+    if (player.x < enemy.x + 80 &&
+        player.x + 80 > enemy.x &&
+        player.y < enemy.y + 60 &&
+        60 + player.y > enemy.y) {
+    player.x = 200;
+    player.y = 405;
+    }
+  });
   }
   handleInput(keyCode) {
         switch(keyCode){
@@ -54,7 +59,7 @@ class Player extends Character {
             this.y -= (this.y > 0) ? 83 : 0;
             break;
         case 'down':
-            this.y += (this.y < 300) ? 83 : 0;
+            this.y += (this.y < 400) ? 83 : 0;
             break;
         case 'right':
             this.x += (this.x < 400) ? 100 : 0;
@@ -65,6 +70,7 @@ class Player extends Character {
   }
 }
 
+
 // This class requires an update(), render() and
 // a handleInput() method.
 
@@ -73,16 +79,17 @@ let allEnemies = [];
 
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
-let player = new Player(200, 322);
+let player = new Player(200, 405);
 
-let newEnemies = function () {
-  const trafficLane = [60, 145, 228];
+const trafficLane = [60, 145, 228];
+
+let spawnEnemies = function () {
   for (let i = 0; i < 3; i ++) {
     allEnemies.push(new Enemy (0, trafficLane[i]));
   }
 };
 
-newEnemies();
+spawnEnemies();
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
