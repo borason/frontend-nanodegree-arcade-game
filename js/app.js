@@ -25,7 +25,7 @@ class Enemy extends Character {
     }
   }
   collisionDetector() {
-    if (this.y === player.y /* && (this.x + 100 > player.x && this.x - 100 < player.x)*/) {
+    if (player.y <= (this.y + 20) && (this.x + 100 > player.x && this.x - 100 < player.x)) {
     console.log('collision');
     }
   }
@@ -51,10 +51,10 @@ class Player extends Character {
   handleInput(keyCode) {
         switch(keyCode){
         case 'up':
-            this.y -= (this.y > 0) ? 85 : 0;
+            this.y -= (this.y > 0) ? 83 : 0;
             break;
         case 'down':
-            this.y += (this.y < 300) ? 85 : 0;
+            this.y += (this.y < 300) ? 83 : 0;
             break;
         case 'right':
             this.x += (this.x < 400) ? 100 : 0;
@@ -73,10 +73,10 @@ let allEnemies = [];
 
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
-let player = new Player(200, 320);
+let player = new Player(200, 322);
 
 let newEnemies = function () {
-  const trafficLane = [60, 145, 230];
+  const trafficLane = [60, 145, 228];
   for (let i = 0; i < 3; i ++) {
     allEnemies.push(new Enemy (0, trafficLane[i]));
   }
