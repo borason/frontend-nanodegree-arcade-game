@@ -4,7 +4,7 @@ var Enemy = function(x, y, speed) {
     // we've provided one for you to get started
     this.x = x;
     this.y = y;
-    this.speed = Math.floor((Math.random() * 300) + 10);
+    this.speed = Math.floor((Math.random() * 300) + 100);
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
     this.sprite = 'images/enemy-bug.png';
@@ -23,6 +23,7 @@ Enemy.prototype.update = function(dt) {
 Enemy.prototype.reachedEndOfBoard = function() {
   if (this.x > ctx.canvas.width) {
     this.x = 0;
+    this.speed = Math.floor((Math.random() * 300) + 100);
   }
 }
 // Draw the enemy on the screen, required method for game
@@ -103,4 +104,5 @@ document.addEventListener('keyup', function(e) {
     player.handleInput(allowedKeys[e.keyCode]);
 });
 
-
+let image = document.getElementsByTagName('img');
+image.style.border = "thick solid #0000FF";
