@@ -15,10 +15,16 @@ var Enemy = function(x, y, speed) {
 Enemy.prototype.update = function(dt) {
     // You should multiply any movement by the dt parameter
     this.x += this.speed * dt;
+    this.reachedEndOfBoard();
     // which will ensure the game runs at the same speed for
     // all computers.
 };
 
+Enemy.prototype.reachedEndOfBoard = function() {
+  if (this.x > ctx.canvas.width) {
+    this.x = 0;
+  }
+}
 // Draw the enemy on the screen, required method for game
 Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
@@ -65,14 +71,14 @@ let allEnemies = [];
 let player = new Player(200, 320);
 
 
-function spawnEnemies () {
+let newEnemies = function () {
   const trafficLane = [60, 145, 230];
   for (let i = 0; i < 3; i ++) {
     allEnemies.push(new Enemy (0, trafficLane[i]));
   }
 };
 
-let newEnemies = function(){setInterval(spawnEnemies(), 1000);};
+// let newEnemies = function(){setInterval(spawnEnemies(), 1000);};
 
 newEnemies();
 
