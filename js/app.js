@@ -1,4 +1,56 @@
+let player;
+let allEnemies;
 var win = false;
+const modalBox = document.querySelector('.modal-content');
+const modal = document.querySelector('#win-modal');
+const modalButton = document.querySelector('#modal-button');
+const closeButton = document.querySelector('#close-button');
+const restartButton = document.querySelector('#replay-button');
+const bodySelector = document.querySelector('body');
+
+const collision = function() {
+  bodySelector.style.backgroundColor = 'rgba(255, 0, 0, 0.3)';
+  setTimeout(function() {
+    bodySelector.style.backgroundColor = '#eef0d8';
+  }, 100);
+    player.x = 200;
+    player.y = 405;
+};
+
+const openModal = function() {
+  modalBox.classList.add('show-modal');
+  modal.classList.add('overlay');
+  modal.classList.remove('modal');
+};
+
+const closeModal = function() {
+  modalBox.classList.remove('show-modal');
+  modal.classList.remove('overlay');
+  modal.classList.add('modal');
+  delete player;
+  allEnemies = '';
+  win = false;
+  startGame();
+}
+
+const startGame = function() {
+  allEnemies = [];
+
+  player = new Player(200, 405);
+
+  const trafficLane = [60, 145, 228];
+
+  let spawnEnemies = function () {
+    for (let i = 0; i < 3; i ++) {
+      allEnemies.push(new Enemy (0, trafficLane[i]));
+    }
+  }();
+  // spawnEnemies();
+modalButton.addEventListener('click', openModal);
+closeButton.addEventListener('click', closeModal);
+restartButton.addEventListener('click', closeModal);
+}
+
 
 class Character {
   constructor(x, y) {
@@ -44,7 +96,7 @@ class Player extends Character {
   update() {
     this.collisionDetector();
     while (this.y < 0 && (win === false)) {
-      console.log('win');
+      openModal();
       win = true;
     }
   }
@@ -54,8 +106,7 @@ class Player extends Character {
           player.x + 80 > enemy.x &&
           player.y < enemy.y + 60 &&
           60 + player.y > enemy.y) {
-      player.x = 200;
-      player.y = 405;
+        collision();
       }
       });
     }
@@ -76,25 +127,6 @@ class Player extends Character {
   }
 }
 
-// This class requires an update(), render() and
-// a handleInput() method.
-
-// Now instantiate your objects.
-let allEnemies = [];
-
-// Place all enemy objects in an array called allEnemies
-// Place the player object in a variable called player
-let player = new Player(200, 405);
-
-const trafficLane = [60, 145, 228];
-
-let spawnEnemies = function () {
-  for (let i = 0; i < 3; i ++) {
-    allEnemies.push(new Enemy (0, trafficLane[i]));
-  }
-};
-
-spawnEnemies();
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
@@ -109,3 +141,4 @@ document.addEventListener('keyup', function(e) {
     player.handleInput(allowedKeys[e.keyCode]);
 });
 
+window.onload = startGame();
