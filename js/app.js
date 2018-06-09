@@ -56,7 +56,6 @@ const startGame = function() {
     }
   }();
   // Adds event listeners to modal buttons
-  // modalButton.addEventListener('click', openModal);
   closeButton.addEventListener('click', closeModal);
   restartButton.addEventListener('click', closeModal);
 }
@@ -125,18 +124,18 @@ class Player extends Character {
     });
   }
   handleInput(keyCode) {
-        switch(keyCode){
-        case 'up':
-            this.y -= (this.y > 0) ? 83 : 0;
-            break;
-        case 'down':
-            this.y += (this.y < 400) ? 83 : 0;
-            break;
-        case 'right':
-            this.x += (this.x < 400) ? 100 : 0;
-            break;
-        default:
-            this.x -= (this.x > 0) ? 100 : 0;
+    switch(keyCode){
+    case 'up':
+        this.y -= (this.y > 0) ? 83 : 0;
+        break;
+    case 'down':
+        this.y += (this.y < 400) ? 83 : 0;
+        break;
+    case 'right':
+        this.x += (this.x < 400) ? 100 : 0;
+        break;
+    default:
+        this.x -= (this.x > 0) ? 100 : 0;
     }
   }
 }
@@ -145,14 +144,14 @@ class Player extends Character {
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
 document.addEventListener('keyup', function(e) {
-    var allowedKeys = {
-        37: 'left',
-        38: 'up',
-        39: 'right',
-        40: 'down'
-    };
+  var allowedKeys = {
+    37: 'left',
+    38: 'up',
+    39: 'right',
+    40: 'down'
+  };
 
-    player.handleInput(allowedKeys[e.keyCode]);
+  player.handleInput(allowedKeys[e.keyCode]);
 });
 
 window.onload = startGame();
