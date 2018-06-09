@@ -115,27 +115,27 @@ class Player extends Character {
   // Detects collision between player and
   collisionDetector() {
     allEnemies.forEach(function (enemy){
-    if (player.x < enemy.x + 80 &&
-        player.x + 80 > enemy.x &&
-        player.y < enemy.y + 60 &&
-        60 + player.y > enemy.y) {
+      if (player.x < enemy.x + 80 &&
+          player.x + 80 > enemy.x &&
+          player.y < enemy.y + 60 &&
+          60 + player.y > enemy.y) {
       collision();
-    }
+      }
     });
   }
   handleInput(keyCode) {
     switch(keyCode){
     case 'up':
-        this.y -= (this.y > 0) ? 83 : 0;
-        break;
+      this.y -= (this.y > 0) ? 83 : 0;
+      break;
     case 'down':
         this.y += (this.y < 400) ? 83 : 0;
         break;
     case 'right':
-        this.x += (this.x < 400) ? 100 : 0;
-        break;
+      this.x += (this.x < 400) ? 100 : 0;
+      break;
     default:
-        this.x -= (this.x > 0) ? 100 : 0;
+      this.x -= (this.x > 0) ? 100 : 0;
     }
   }
 }
