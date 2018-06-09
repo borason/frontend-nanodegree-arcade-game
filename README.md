@@ -1,6 +1,42 @@
 frontend-nanodegree-arcade-game
 ===============================
+# Arcade Game Project
 
-Students should use this [rubric](https://review.udacity.com/#!/projects/2696458597/rubric) for self-checking their submission. Make sure the functions you write are **object-oriented** - either class functions (like Player and Enemy) or class prototype functions such as Enemy.prototype.checkCollisions, and that the keyword 'this' is used appropriately within your class and class prototype functions to refer to the object the function is called upon. Also be sure that the **readme.md** file is updated with your instructions on both how to 1. Run and 2. Play your arcade game.
+## Table of Contents
 
-For detailed instructions on how to get started, check out this [guide](https://docs.google.com/document/d/1v01aScPjSWCCWQLIpFqvg3-vXLH2e8_SZQKC8jNO0Dc/pub?embedded=true).
+* [About](#about)
+* [Instructions](#instructions)
+
+## About
+
+
+This game is a part of the Udacity Front End Nano Degree. The project was created based off a fork from the starter code provided by the [Udacity Github](https://github.com/udacity/fend-project-memory-game).
+
+For more information about the Udacity Front End Nano Degree, please visit the [Udacity FEND website](https://www.udacity.com/course/front-end-web-developer-nanodegree--nd001).
+
+## Instructions
+
+- #### Install
+  ###### Bash
+
+    ```git clone https://github.com/borason/frontend-nanodegree-arcade-game```
+
+    Navigate to the project directory.
+
+    ```open ./index.html```
+
+- #### Gameplay
+
+    ##### About Game
+    This game is based on the classic arcade game [Frogger](https://en.wikipedia.org/wiki/Frogger).\
+    The objective of the game is to reach the water without colliding with any bugs.
+
+    ##### Game Instructions
+    The &uarr; arrow key moves the player up.\
+    The &darr; arrow key moves the player down.\
+    The &larr; arrow key moves the player left.\
+    The &rarr; arrow key moves the player right.\
+    The game ends when the player reaches the water without colliding with any bugs.
+
+
+
