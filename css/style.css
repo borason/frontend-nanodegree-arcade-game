@@ -1,13 +1,27 @@
 body {
   text-align: center;
   background-color: #eef0d8;
-  background-image: url("https://www.transparenttextures.com/patterns/black-mamba.png");
-/* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
+  background-image: url("../images/black-mamba.png"); /* Downloaded from https://www.transparenttextures.com/ */
 }
 
-/* The Modal (background) */
+.canvas-container {
+  /*background-color: rgba(0, 0, 0, 0.8);*/
+  background-color: #304047;
+  background-image: url("../images/back-pattern.png"); /* Downloaded from https://www.transparenttextures.com/ */
+  margin: auto;
+  padding-bottom: 30px;
+  border: solid 2px;
+  border-bottom-color: #ccb;
+  border-left-color: #eed;
+  border-right-color: #eed;
+  border-top-color: #ccb;
+  max-height: 80%;
+  max-width: 60%;
+}
+
+/* The Modal  */
 .modal {
-    display: none; /* Hidden by default */
+    display: none;
 }
 
 #title {
@@ -28,9 +42,8 @@ body {
   margin: auto;
   overflow: auto;
   color: white;
-  background-color: #bcd1cd;
-  background-image: url("https://www.transparenttextures.com/patterns/checkered-light-emboss.png");
-/* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
+  background-color: #666973;
+  background-image: url("../images/checkered-light-emboss.png"); /* Downloaded from https://www.transparenttextures.com/ */
 }
 
 #modal-text {
@@ -62,38 +75,16 @@ img {
   font-weight: bold;
   box-shadow: 2px 2px 1px black;
   color: black;
-/*  text-shadow: 1px 1px white;*/
+  background-color: white;
+  margin: 40px 20px 0 20px;
 }
 
 .button:hover {
-    background-color: #4CAF50; /* Green */
+    background-color: #4caf50; /* Green */
     color: white;
 }
 
 #close-button:hover {
     background-color: #f44336;; /* Red */
     color: white;
-}
-
-.canvas-container {
-  /*background-color: rgba(0, 0, 0, 0.8);*/
-  background-color: #304047;
-  background-image: url("https://www.transparenttextures.com/patterns/beige-paper.png");
-/* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
-/* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
-  margin: auto;
-  padding-bottom: 30px;
-  border: solid 2px;
-  border-bottom-color: #ccb;
-  border-left-color: #eed;
-  border-right-color: #eed;
-  border-top-color: #ccb;
-  max-height: 80%;
-  max-width: 60%;
-}
-
-header {
-  height: 100%;
-  width: 100%;
-  background-color: black;
 }
